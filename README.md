@@ -1,0 +1,3 @@
+O Connecta Comunidade é uma plataforma online projetada para simplificar a organização e a descoberta de eventos locais e comunitários.
+
+Seu objetivo principal é conectar organizadores de eventos (como ONGs, associações de bairro, grupos de hobby, etc.) a membros da comunidade, oferecendo um espaço centralizado onde os organizadores podem facilmente cadastrar, divulgar e gerenciar participantes para suas atividades, e onde os membros da comunidade podem descobrir, buscar e se inscrever em eventos de seu interesse próximos a eles.
