@@ -20,7 +20,8 @@
 	</properties>
 
 	<modules>
-		<module>application/core/domain/v1</module>
+        <module>src/main/java/com/connectacomuniade/domain</module>
+		<module>src/main/java/com/connectacomuniade/application</module>
 	</modules>
 
 	<dependencyManagement>
@@ -69,7 +70,7 @@
 		<profile>
 			<id>spring-boot</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 				<property>
 					<name>
 						framework
