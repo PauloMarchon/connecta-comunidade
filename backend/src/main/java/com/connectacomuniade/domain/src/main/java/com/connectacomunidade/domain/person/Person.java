@@ -8,6 +8,7 @@ import com.connectacomunidade.domain.valueobjects.IdentificationNumber;
 import com.connectacomunidade.domain.valueobjects.PhoneNumber;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class Person {
     private final PersonId ref;
@@ -55,6 +56,19 @@ public class Person {
     ) {
         return new Person(
                 PersonId.newId(), nome, email, identificationNumber, birthdate, phoneNumber
+        );
+    }
+
+    public static Person of(
+            UUID ref,
+            String nome,
+            Email email,
+            IdentificationNumber identificationNumber,
+            LocalDate birthdate,
+            PhoneNumber phoneNumber
+    ) {
+        return new Person(
+                PersonId.of(ref), nome, email, identificationNumber, birthdate, phoneNumber
         );
     }
 
