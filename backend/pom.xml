@@ -22,7 +22,8 @@
 	<modules>
         <module>src/main/java/com/connectacomuniade/domain</module>
 		<module>src/main/java/com/connectacomuniade/application</module>
-	</modules>
+        <module>src/main/java/com/connectacomuniade/infrastructure</module>
+    </modules>
 
 	<dependencyManagement>
 		<dependencies>
