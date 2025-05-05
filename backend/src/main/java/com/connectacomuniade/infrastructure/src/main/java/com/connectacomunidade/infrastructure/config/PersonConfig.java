@@ -4,6 +4,7 @@ import com.connectacomunidade.application.port.PersonRepository;
 import com.connectacomunidade.application.port.out.EmailUniquenessChecker;
 import com.connectacomunidade.application.port.out.IdentificationNumberUniquenessChecker;
 import com.connectacomunidade.application.port.out.PhoneNumberUniquenessChecker;
+import com.connectacomunidade.application.usecases.impl.CreatePersonUseCaseImpl;
 import com.connectacomunidade.application.usecases.person.create.CreatePersonUseCase;
 import com.connectacomunidade.infrastructure.mapper.PersonMapper;
 import com.connectacomunidade.infrastructure.persistence.jpa.out.EmailUniquenessCheckerJpaAdapter;
@@ -43,6 +44,6 @@ public class PersonConfig {
             EmailUniquenessChecker emailUniquenessChecker,
             IdentificationNumberUniquenessChecker identificationNumberUniquenessChecker,
             PhoneNumberUniquenessChecker phoneNumberUniquenessChecker) {
-        return new CreatePersonUseCase(personRepository, emailUniquenessChecker, identificationNumberUniquenessChecker, phoneNumberUniquenessChecker);
+        return new CreatePersonUseCaseImpl(personRepository, emailUniquenessChecker, identificationNumberUniquenessChecker, phoneNumberUniquenessChecker);
     }
 }
