@@ -1,4 +1,4 @@
-package com.connectacomunidade.application.dto;
+package com.connectacomunidade.infrastructure.web.dto;
 
 import com.connectacomunidade.domain.person.Person;
 
