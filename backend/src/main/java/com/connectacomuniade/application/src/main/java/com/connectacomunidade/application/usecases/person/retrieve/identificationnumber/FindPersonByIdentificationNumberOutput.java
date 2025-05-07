@@ -1,8 +1,8 @@
 package com.connectacomunidade.application.usecases.person.retrieve.identificationnumber;
 
-import com.connectacomunidade.application.dto.ReadPerson;
+import com.connectacomunidade.domain.person.Person;
 
 public record FindPersonByIdentificationNumberOutput(
-        ReadPerson readPerson
+        Person person
 ) {
 }

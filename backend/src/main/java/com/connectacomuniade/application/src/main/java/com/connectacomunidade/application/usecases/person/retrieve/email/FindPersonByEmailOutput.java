@@ -1,8 +1,8 @@
 package com.connectacomunidade.application.usecases.person.retrieve.email;
 
-import com.connectacomunidade.application.dto.ReadPerson;
+import com.connectacomunidade.domain.person.Person;
 
 public record FindPersonByEmailOutput(
-        ReadPerson readPerson
+        Person person
 ) {
 }

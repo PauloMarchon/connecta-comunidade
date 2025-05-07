@@ -1,6 +1,5 @@
 package com.connectacomunidade.application.usecases.impl;
 
-import com.connectacomunidade.application.dto.ReadPerson;
 import com.connectacomunidade.application.port.PersonRepository;
 import com.connectacomunidade.application.usecases.person.retrieve.email.FindPersonByEmailInput;
 import com.connectacomunidade.application.usecases.person.retrieve.email.FindPersonByEmailOutput;
@@ -22,8 +21,6 @@ public class FindPersonByEmailUseCaseImpl implements FindPersonByEmailUseCase {
         Person person = personRepository.findByEmail(email).orElseThrow(
                 () -> new IllegalArgumentException(""));
 
-        return new FindPersonByEmailOutput(
-                ReadPerson.fromPerson(person)
-        );
+        return new FindPersonByEmailOutput(person);
     }
 }
