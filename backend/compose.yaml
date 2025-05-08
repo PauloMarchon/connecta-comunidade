@@ -1,9 +1,21 @@
 services:
   postgres:
-    image: 'postgres:latest'
+    image: postgres:latest
+    container_name: cc_postgres
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      POSTGRES_DB: connecta_comunidade_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
-      - '5432'
+      - "5433:5432"
+    volumes:
+      - connecta-comunidade:/var/lib/postgresql/data
+    networks:
+      - connecta-network
+
+volumes:
+  connecta-comunidade:
+
+networks:
+  connecta-network:
+    driver: bridge
