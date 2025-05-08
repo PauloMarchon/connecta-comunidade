@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class PersonJpaAdapter implements PersonRepository {
@@ -44,8 +45,16 @@ public class PersonJpaAdapter implements PersonRepository {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Person> findById(PersonId personId) {
-        Optional<PersonJpaEntity> existingPerson = personJpaRepository.findById(personId.getValue());
+    public Optional<Person> findById(Integer id) {
+        Optional<PersonJpaEntity> existingPerson = personJpaRepository.findById(id);
+
+        return existingPerson.map(personMapper::personJpaEntityToPerson);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Person> findByRef(UUID ref) {
+        Optional<PersonJpaEntity> existingPerson = personJpaRepository.findByRef(ref);
 
         return existingPerson.map(personMapper::personJpaEntityToPerson);
     }
@@ -76,8 +85,8 @@ public class PersonJpaAdapter implements PersonRepository {
 
     @Override
     @Transactional(readOnly = true)
-    public boolean existsById(PersonId personId) {
-        return personJpaRepository.existsById(personId.getValue());
+    public boolean existsByRef(PersonId personId) {
+        return personJpaRepository.existsByRef(personId.getValue());
     }
 
     @Override
