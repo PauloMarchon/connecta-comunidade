@@ -1,5 +1,6 @@
 package com.connectacomunidade.application.usecases.impl;
 
+import com.connectacomunidade.application.exception.PersonNotFoundException;
 import com.connectacomunidade.application.port.PersonRepository;
 import com.connectacomunidade.application.usecases.person.retrieve.identificationnumber.FindPersonByIdentificationNumberInput;
 import com.connectacomunidade.application.usecases.person.retrieve.identificationnumber.FindPersonByIdentificationNumberOutput;
@@ -19,7 +20,7 @@ public class FindPersonByIdentificationNumberUseCaseImpl implements FindPersonBy
         IdentificationNumber identificationNumber = IdentificationNumber.create(findPersonByIdentificationNumberInput.identificationNumber());
 
         Person person = personRepository.findByIdentificationNumber(identificationNumber)
-                .orElseThrow(() -> new IllegalArgumentException(""));
+                .orElseThrow(() -> new PersonNotFoundException("Person not found"));
 
         return new FindPersonByIdentificationNumberOutput(person);
     }

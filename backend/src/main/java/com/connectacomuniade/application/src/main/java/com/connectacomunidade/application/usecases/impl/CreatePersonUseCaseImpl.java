@@ -1,5 +1,8 @@
 package com.connectacomunidade.application.usecases.impl;
 
+import com.connectacomunidade.application.exception.EmailAlreadyExistsException;
+import com.connectacomunidade.application.exception.IdentificationNumberAlreadyExistsException;
+import com.connectacomunidade.application.exception.PhoneNumberAlreadyExistsException;
 import com.connectacomunidade.application.port.PersonRepository;
 import com.connectacomunidade.application.port.out.EmailUniquenessChecker;
 import com.connectacomunidade.application.port.out.IdentificationNumberUniquenessChecker;
@@ -29,15 +32,15 @@ public class CreatePersonUseCaseImpl implements CreatePersonUseCase {
     public CreatePersonOutput execute(CreatePersonInput createPersonInput) {
         Email email = Email.of(createPersonInput.email());
         if (emailUniquenessChecker.isEmailAlreadyUsed(email))
-            throw new IllegalArgumentException("");
+            throw new EmailAlreadyExistsException("Email already registered");
 
         IdentificationNumber identificationNumber = IdentificationNumber.create(createPersonInput.identificationNumber());
         if (identificationNumberUniquenessChecker.isIdentificationNumberAlreadyUsed(identificationNumber))
-            throw new IllegalArgumentException("");
+            throw new IdentificationNumberAlreadyExistsException("Identification number already registered");
 
         PhoneNumber phoneNumber = PhoneNumber.of(createPersonInput.phoneNumber());
         if (phoneNumberUniquenessChecker.isPhoneNumberAlreadyUsed(phoneNumber))
-            throw new IllegalArgumentException("");
+            throw new PhoneNumberAlreadyExistsException("Phone number already registered");
 
         return new CreatePersonOutput(
                 personRepository.save(

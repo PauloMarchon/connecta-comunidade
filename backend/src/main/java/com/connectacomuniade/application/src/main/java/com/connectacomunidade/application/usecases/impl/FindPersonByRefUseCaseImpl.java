@@ -1,5 +1,6 @@
 package com.connectacomunidade.application.usecases.impl;
 
+import com.connectacomunidade.application.exception.PersonNotFoundException;
 import com.connectacomunidade.application.port.PersonRepository;
 import com.connectacomunidade.application.usecases.person.retrieve.ref.FindPersonByRefInput;
 import com.connectacomunidade.application.usecases.person.retrieve.ref.FindPersonByRefOutput;
@@ -16,7 +17,7 @@ public class FindPersonByRefUseCaseImpl implements FindPersonByRefUseCase {
     @Override
     public FindPersonByRefOutput execute(FindPersonByRefInput findPersonByRefInput) {
         Person person = personRepository.findByRef(findPersonByRefInput.ref())
-                .orElseThrow(() -> new IllegalArgumentException(""));
+                .orElseThrow(() -> new PersonNotFoundException("Person not found"));
 
         return new FindPersonByRefOutput(person);
     }

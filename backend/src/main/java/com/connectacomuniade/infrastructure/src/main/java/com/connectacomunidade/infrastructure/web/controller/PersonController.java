@@ -1,4 +1,4 @@
-package com.connectacomunidade.infrastructure.web;
+package com.connectacomunidade.infrastructure.web.controller;
 
 import com.connectacomunidade.application.usecases.person.retrieve.ref.FindPersonByRefInput;
 import com.connectacomunidade.application.usecases.person.retrieve.ref.FindPersonByRefOutput;
