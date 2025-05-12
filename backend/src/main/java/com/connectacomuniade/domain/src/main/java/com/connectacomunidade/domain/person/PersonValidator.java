@@ -1,7 +1,10 @@
 package com.connectacomunidade.domain.person;
 
+import com.connectacomunidade.domain.notification.Notification;
 import com.connectacomunidade.domain.validation.ValidationHandler;
 import com.connectacomunidade.domain.validation.Validator;
+
+import java.time.LocalDate;
 
 public class PersonValidator extends Validator {
     private final Person person;
@@ -13,6 +16,10 @@ public class PersonValidator extends Validator {
 
     @Override
     public void validate() {
-        //TODO
+        if (person.getName().isBlank())
+            getHandler().addNotification(new Notification("Invalid username"));
+
+        if (person.getBirthdate().isAfter(LocalDate.now()))
+            getHandler().addNotification(new Notification("Invalid birthdate"));
     }
 }

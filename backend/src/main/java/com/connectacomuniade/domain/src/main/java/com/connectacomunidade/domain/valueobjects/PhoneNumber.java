@@ -1,5 +1,7 @@
 package com.connectacomunidade.domain.valueobjects;
 
+import com.connectacomunidade.domain.exception.InvalidValueException;
+
 import java.util.Objects;
 
 public class PhoneNumber {
@@ -7,7 +9,7 @@ public class PhoneNumber {
 
     private PhoneNumber(String value) {
         if (!isValid(value))
-            throw new IllegalArgumentException();
+            throw new InvalidValueException("Invalid phone number");
 
         this.value = value;
     }
@@ -17,7 +19,8 @@ public class PhoneNumber {
     }
 
     private static boolean isValid(final String phoneNumber) {
-        return true;
+        //TODO
+        return phoneNumber != null && !phoneNumber.trim().isEmpty();
     }
 
     public String getValue() {

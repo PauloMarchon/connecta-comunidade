@@ -18,7 +18,7 @@ public class NotificationContext implements ValidationHandler {
     }
 
     public static NotificationContext create(final Notification anNotification) {
-        return new NotificationContext(new ArrayList<>()).append(anNotification);
+        return new NotificationContext(new ArrayList<>()).addNotification(anNotification);
     }
 
     public static NotificationContext create(final Throwable t) {
@@ -26,13 +26,13 @@ public class NotificationContext implements ValidationHandler {
     }
 
     @Override
-    public NotificationContext append(final Notification anNotification) {
+    public NotificationContext addNotification(final Notification anNotification) {
         this.notifications.add(anNotification);
         return this;
     }
 
     @Override
-    public NotificationContext append(final ValidationHandler anHandler) {
+    public NotificationContext addNotification(final ValidationHandler anHandler) {
         this.notifications.addAll(anHandler.getNotifications());
         return this;
     }

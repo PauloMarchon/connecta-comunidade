@@ -5,8 +5,8 @@ import com.connectacomunidade.domain.notification.Notification;
 import java.util.List;
 
 public interface ValidationHandler {
-    ValidationHandler append(Notification anNotification);
-    ValidationHandler append(ValidationHandler anHandler);
+    ValidationHandler addNotification(Notification anNotification);
+    ValidationHandler addNotification(ValidationHandler anHandler);
 
     <T> T validate(Validation<T> aValidation);
 
